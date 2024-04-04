@@ -60,3 +60,22 @@ INSERT INTO pedidos(ClienteID, FechaPedido, CostoEnvio) VALUES (5, '2024-09-11',
 INSERT INTO pedidos(ClienteID, FechaPedido, CostoEnvio) VALUES (6, '2024-02-13', 30.20);
 INSERT INTO pedidos(ClienteID, FechaPedido, CostoEnvio) VALUES (7, '2024-06-22', 50.20);
 INSERT INTO pedidos(ClienteID, FechaPedido, CostoEnvio) VALUES (8, '2024-07-30', 80.20);
+
+-- ## Análisis Exploratorio - Consultas SQL
+
+-- AVG() PROMEDIO Y COUNT() CONTAR
+
+-- Para encontrar pedidos cuyo costo de envio sea mayor que el promedio
+SELECT AVG(CostoEnvio) AS PromedioCostoEnvio FROM pedidos;
+-- Encontrar los pedidos cuyo 'CostoEnvio' es mayor al promedio
+SELECT * FROM pedidos WHERE CostoEnvio > (SELECT AVG(CostoEnvio) FROM pedidos);
+-- Encontrar a los empleados contratados más recientemente que el promedio
+Select * from empleados;
+-- SELECT AVG(FechaContratacion) FROM empleados;
+SELECT * FROM empleados WHERE FechaContratacion > (SELECT AVG(FechaContratacion) FROM empleados);
+
+-- Funciones Max y MIN
+-- Encontrar el costo de envio mas barato y el mas caro
+SELECT MIN(CostoEnvio) FROM pedidos;
+SELECT * FROM pedidos WHERE CostoEnvio = (SELECT MIN(CostoEnvio) FROM pedidos);
+SELECT * FROM pedidos WHERE CostoEnvio = (SELECT MAX(CostoEnvio) FROM pedidos);
